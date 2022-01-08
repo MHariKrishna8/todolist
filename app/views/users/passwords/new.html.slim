@@ -1,0 +1,13 @@
+.login-page
+  .panel-body
+    = form_for :password, url: password_path, method: 'post' do |form|
+      .form-group
+        label style='font-size: x-large' Forgot your password ?
+      .form-group
+        label.control-label for="email" Email
+        = form.email_field :email, autofocus: true, placeholder: "email@example.com", class: "form-control"
+      input type='submit' value='Send me reset password instructions'
+      br 
+      br
+      = link_to 'Back to Log In', sign_in_path, class: 'btn btn-info btn-block'
+      = link_to 'Sign Up', sign_up_path, class: 'btn btn-link btn-block'

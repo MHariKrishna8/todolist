@@ -1,0 +1,14 @@
+br
+- @tasks.in_batches(of: 4) do |task_batch|
+  .row
+    - task_batch.each do |task|
+      .col-sm-3
+        .card
+          .card-body
+            h5.card-title
+              = task.name
+            p.card-text
+              = task.description
+            a.btn.btn-primary.float-left href="#" Update
+            = link_to(:Delete, tasks_path(id: task.id), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger float-right')
+  br
