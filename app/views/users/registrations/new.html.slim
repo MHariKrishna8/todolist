@@ -1,0 +1,14 @@
+.login-page
+  .panel-body
+    = form_for :registration, url: sign_in_path, method: 'post' do |form|
+      .form-group
+        label.control-label for="email" Email
+        = form.email_field :email, autofocus: true, placeholder: "email@example.com", class: "form-control"
+      .form-group
+        label.control-label for="password" Password (minimum 6 characters)
+        = form.password_field :password, autocomplete: "off", placeholder: "******", class: "form-control", title: "Please enter your password"
+      .form-group
+        label.control-label for="password" Confirm Password
+        = form.password_field :password, autocomplete: "off", placeholder: "******", class: "form-control", title: "Please enter your password"
+      input.btn.btn-info.btn-block type='submit'
+      = link_to 'Cancel', sign_in_path, class: 'btn btn-link btn-block'

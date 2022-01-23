@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    meta charset="utf-8" /
+    meta content="width=device-width, initial-scale=1.0" name="viewport" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    title = 'To Do List'
+    = favicon_link_tag ''
+    = stylesheet_link_tag :application, media: 'all'
+    = javascript_include_tag :application
+    = csrf_meta_tags
+
+  body
+    - unless current_user.nil?
+      #menuHeader 
+        nav.navbar.navbar-expand-lg.navbar-light.bg-primary
+          #navbarText.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+              li.nav-item
+                a.nav-link.menuItems href="#" Taskboard
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle.menuItems href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" Tasks
+                .dropdown-menu
+                  = link_to(:New, new_tasks_path, class: 'dropdown-item')
+                  a.dropdown-item href="#" Completed 
+                  a.dropdown-item href="#" Scheduled
+              li.nav-item.dropdown
+                a.nav-link.dropdown-toggle.menuItems href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" Users
+                .dropdown-menu
+                  a.dropdown-item href="#" New 
+                  a.dropdown-item href="#" List 
+              li.nav-item
+                a.nav-link.menuItems href="#" Profile 
+              li.nav-item
+                = link_to(:LogOut, destroy_user_session_path, method: :delete, data: {confirm: 'Sign Out?', 'confirm-button-text': "Yes"}, class: 'nav-link menuItems')
+
+    = yield
