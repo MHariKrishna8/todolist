@@ -3,13 +3,6 @@ os: linux
 files:
   - source: /
     destination: /home/todolist/
-permissions:
-  - object: /home/todolist/
-    pattern: "*"
-    mode: 775
-    type:
-      - file
-      - directory
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies.sh
